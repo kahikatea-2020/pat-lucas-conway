@@ -1,10 +1,13 @@
-module.exports =  {
+module.exports = {
   runGame
 }
 
 function runGame (arr) {
-  console.log(arr)
-  for (let index = 0; index < 50; index++) { // 50 generations
+  console.log(arr.slice(0,4))
+  console.log(arr.slice(4,8))
+  console.log(arr.slice(8,12))
+  console.log(arr.slice(12))
+  for (let index = 0; index < 2; index++) { // 50 generations
     for (let index in arr) {
       if (arr[index] == 1) { // is alive
         if (neighbourCount(index, arr) < 2) { // underpop
@@ -17,7 +20,12 @@ function runGame (arr) {
       } else if (neighbourCount(index, arr) == 3) {
         arr[index] = 1
       }
-    } console.log(arr[0], arr[1], arr[2], arr[3], "\n",arr[4], arr[5], arr[6], arr[7], "\n",arr[8], arr[9], arr[10], arr[11], "\n", arr[12], arr[13], arr[14], arr[15])
+    }
+    console.log('Generation', index);
+    console.log(arr[0], arr[1], arr[2], arr[3])
+    console.log(arr[4], arr[5], arr[6], arr[7])
+    console.log(arr[8], arr[9], arr[10], arr[11])
+    console.log(arr[12], arr[13], arr[14], arr[15])
   }
 }
 
@@ -42,7 +50,7 @@ function getCoord (index) {
   let coords = []
   coords[0] = Math.floor(index / 4)
   coords[1] = index % 4
-  
+
   return coords
 }
 
